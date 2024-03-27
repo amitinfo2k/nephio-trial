@@ -36,5 +36,17 @@ do
 done
 echo "Network creation done"
 
+echo "Deploying edge componenets"
+
+kubectl apply -f test-infra/e2e/tests/free5gc/004-free5gc-operator.yaml
+kubectl apply -f test-infra/e2e/tests/free5gc/005-edge-free5gc-upf.yaml
+
+echo "Deploying regional components"
+
+kubectl apply -f  test-infra/e2e/tests/sdcore4g/004-sdcore4g-operator.yaml
+kubectl apply -f  test-infra/e2e/tests/sdcore4g/006-regional-sdcore4g-mme.yaml
+kubectl apply -f  test-infra/e2e/tests/sdcore4g/006-regional-sdcore4g-spgwc.yaml
+
+echo "Deployment done verify the status on dashboard"
 
 
